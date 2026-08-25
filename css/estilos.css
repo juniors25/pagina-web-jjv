@@ -73,12 +73,16 @@ header {
                 url('../images/fondo.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     color: white;
     padding: 200px 0 120px;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero::before {
@@ -468,8 +472,9 @@ footer {
     }
     
     .hero {
-        padding: 180px 0 100px;
-        min-height: 60vh;
+        padding: 220px 0 100px;
+        min-height: 80vh;
+        background-attachment: scroll;
     }
     
     .hero-content {
