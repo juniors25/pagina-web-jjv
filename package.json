@@ -1,0 +1,11 @@
+{
+  "name": "jjv-servicios-web",
+  "version": "1.0.0",
+  "description": "Sitio web de JJ&V SERVICIOS INFORMATICOS",
+  "scripts": {
+    "start": "npx serve -s . -l 8080"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
