@@ -469,18 +469,35 @@ footer {
     
     .hero {
         padding: 180px 0 100px;
+        min-height: 60vh;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+        position: relative;
+        z-index: 2;
     }
     
     .hero-content h2 {
         font-size: 2rem;
         letter-spacing: 2px;
         line-height: 1.4;
+        color: white;
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 102, 204, 0.6);
     }
     
     .hero-content p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         line-height: 1.6;
         padding: 0 1rem;
+        color: white;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        max-width: 100%;
+    }
+    
+    .hero-content .btn {
+        z-index: 3;
+        position: relative;
     }
     
     .section-title {
