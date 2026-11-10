@@ -641,3 +641,7 @@ footer {
 .whatsapp-float:hover {
     transform: scale(1.1);
 }
+
+footer {
+    padding-bottom: 90px;
+}
