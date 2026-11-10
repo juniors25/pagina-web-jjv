@@ -1,0 +1,29 @@
+name: Publicar en Instagram
+
+on:
+  schedule:
+    - cron: '0 22 * * 1,3,5'  # lunes, miércoles y viernes 19:00 hora de Mendoza
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: 'Fecha a publicar (YYYY-MM-DD). Vacío = hoy'
+        required: false
+      dry_run:
+        description: 'Simular sin publicar'
+        type: boolean
+        default: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/publicar_instagram.py
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FECHA: ${{ inputs.fecha }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
