@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const offset = document.querySelector('header').offsetHeight;
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.pageYOffset - offset,
+                    behavior: 'smooth'
                 });
             }
         });
@@ -19,14 +20,18 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Obtener valores del formulario
-            const formData = new FormData(this);
-            
-            // Aquí puedes agregar la lógica para enviar el formulario
-            // Por ahora, mostraremos un mensaje de éxito
-            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-            
-            // Limpiar el formulario
+            const data = new FormData(this);
+            const texto = [
+                'Hola JJ&V, quiero hacer una consulta.',
+                'Nombre: ' + data.get('nombre'),
+                'Email: ' + data.get('email'),
+                data.get('telefono') ? 'Teléfono: ' + data.get('telefono') : '',
+                'Servicio: ' + data.get('servicio'),
+                'Mensaje: ' + data.get('mensaje')
+            ].filter(Boolean).join('\n');
+
+            window.open('https://wa.me/5492616833961?text=' + encodeURIComponent(texto), '_blank');
+
             this.reset();
         });
     }
